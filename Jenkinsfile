@@ -36,7 +36,7 @@ pipeline {
             )
                 script {
                     sh "sudo docker rm developer -f"
-                    sh "sudo docker run -d --name developer -p 3030:80 denisdbp/mobead_image_build:latest" 
+                    sh "sudo docker run -d --name developer -p 3333:80 denisdbp/mobead_image_build:latest" 
                 }
             }
         }
