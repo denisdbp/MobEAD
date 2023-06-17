@@ -31,6 +31,7 @@ pipeline {
         stage('Public image') {
             steps{
                 script {
+                    sh "sudo docker rm production -f"
                     sh "sudo docker run -d --name production -p 3000:80 denisdbp/mobead_image_build:$BUILD_NUMBER" 
                 }
             }
