@@ -31,9 +31,10 @@ pipeline {
         stage('Fazer o deploy em produção ?'){
             steps {
                 script {
-                  timeout(time: 10, unit: 'MINUTES'){
-                    input(id: "Deploy Gate", message: "Fazer o deploy em produção ?" ok: 'Deploy')
-                  }
+                  input {
+                message "Ready to deploy?"
+                ok "Yes"
+            }
                 }
             }
         }
