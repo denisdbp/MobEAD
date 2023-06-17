@@ -35,8 +35,8 @@ pipeline {
                 ok: "Sim"
             )
                 script {
-                    sh "sudo docker rm production -f"
-                    sh "sudo docker run -d --name production -p 3000:80 denisdbp/mobead_image_build:$BUILD_NUMBER" 
+                    sh "sudo docker rm developer -f"
+                    sh "sudo docker run -d --name developer -p 3030:80 denisdbp/mobead_image_build:$BUILD_NUMBER" 
                 }
             }
         }
