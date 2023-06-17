@@ -28,15 +28,19 @@ pipeline {
                 }
             }
         }
-        stage('Fazer o deploy em produção ?'){
+        stages {
+        stage ('Fazer o deploy em produção ?') {
             input {
                 message "Deseja fazer deploy em produção ?"
                 ok "Sim"
-                 script {
+            }
+            steps {
+                script {
                     sh "sudo docker rm production -f"
                     sh "sudo docker run -d --name production -p 3000:80 denisdbp/mobead_image_build:$BUILD_NUMBER" 
                 }
             }
+        }
         }
     } 
 }
