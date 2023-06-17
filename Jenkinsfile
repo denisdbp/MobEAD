@@ -25,6 +25,9 @@ pipeline {
                   docker.withRegistry('https://registry-1.docker.io/v2/', 'dockerhub') {
                    dockerImage.push("$BUILD_NUMBER")
                   }
+                  timeout(time: 10, unit: 'MINUTES'){
+                  input(id: "Deploy", message: "Fazer o deploy em produção ?" ok: 'Deploy')
+                  }
                 }
             }
         }
