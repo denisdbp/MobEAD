@@ -15,7 +15,7 @@ pipeline {
         stage('Build image') {
             steps{
                 script {
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                    dockerImage = docker.build registry + ":latest"
                 }
             }
         }
@@ -23,7 +23,7 @@ pipeline {
             steps{
                 script {
                   docker.withRegistry('https://registry-1.docker.io/v2/', 'dockerhub') {
-                   dockerImage.push("$BUILD_NUMBER")
+                   dockerImage.push("latest")
                   }
                 }
             }
@@ -36,7 +36,7 @@ pipeline {
             )
                 script {
                     sh "sudo docker rm developer -f"
-                    sh "sudo docker run -d --name developer -p 3030:80 denisdbp/mobead_image_build:$BUILD_NUMBER" 
+                    sh "sudo docker run -d --name developer -p 3030:80 denisdbp/mobead_image_build:latest" 
                 }
             }
         }
